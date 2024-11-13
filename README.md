@@ -1,6 +1,6 @@
 ## 📁Практическая 1 
 
-### Задание № 1: Простой калькультр ![](практическая 1/скрины/1.png)
+### Задание № 1: Простой калькультр ![](https://github.com/user-attachments/assets/e846fe2d-72e6-4e6f-9052-ef842d764fb7)
 ### Задание № 2: Конвектор температур ![](https://github.com/Danilzone/qwerty/blob/main/src/screenshots/2.png)
 ### Задание № 3: Генератор случайных чисел ![](https://github.com/Danilzone/qwerty/blob/main/src/screenshots/3.png)
 ### Задание № 4: Проверка на простое число ![](https://github.com/Danilzone/qwerty/blob/main/src/screenshots/4.png)

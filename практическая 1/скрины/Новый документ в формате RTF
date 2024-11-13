@@ -1,0 +1,389 @@
+class Person {
+  String name;
+  int age;
+  
+  Person(this.name, this.age);
+  
+  void sayHello() {
+    print('Привет, маня зовут ${this.name}!');
+  }
+}
+
+void main() {
+  var person = Person("Тимоха", 13);
+  person.sayHello();
+}
+
+------------------------
+
+class Person {
+  String name;
+  int age;
+  
+  Person(this.name, this.age);
+  
+  void sayHello() {
+    print('Привет, маня зовут ${this.name}!');
+  }
+}
+
+class Student extends Person {
+  String studentId;
+  
+  Student(String name, int age, this.studentId) : super(name, age);
+  
+  void study() {
+    print('Я студент с ID ${this.studentId} и я учусь!');
+  }
+}
+
+void main() {
+  
+  var student = Student('Тимоха', 13, '1007');
+  
+  student.sayHello();
+  student.study();
+}
+
+------------------------
+
+abstract class Shape {
+  double calculateArea();
+}
+
+class Circle extends Shape {
+  double radius;
+  
+  Circle(this.radius);
+  
+  @override
+  double calculateArea() {
+    return 3.14 * radius * radius;
+  }
+}
+
+class Rectangle extends Shape {
+  double width;
+  double height;
+  
+  Rectangle(this.width, this.height);
+  
+  @override
+  double calculateArea() {
+    return width * height;
+  }
+}
+
+void main() {
+  var circle = Circle(5);
+  var rectangle = Rectangle(4, 6);
+  
+  print('Площадь круга: ${circle.calculateArea()}');
+  print('Площадь прямоугольника: ${rectangle.calculateArea()}');
+}
+
+--------------------------
+
+abstract class Drawable {
+  void draw();
+}
+
+class Circle implements Drawable {
+  @override
+  void draw() {
+    print('Круг нарисован!');
+  }
+}
+
+void main() {
+  var circle = Circle();
+  circle.draw();
+}
+
+------------------------------
+
+class MathUtils {
+  static double calculateCircleArea(double radius) {
+    return 3.14 * radius * radius;
+  }
+}
+
+void main() {
+  double radius = 5;
+  double area = MathUtils.calculateCircleArea(radius);
+  print('Площадь круга с радиусом $radius: $area');
+}
+
+---------------------------
+
+class Person {
+  late int _age;
+  
+  int get age => _age;
+  
+  set age(int value) {
+    if (value >= 0) {
+      _age = value;
+    } else {
+      print('Возраст не может быть отрицательным!');
+    }
+  }
+}
+
+void main() {
+  var person = Person();
+  person.age = 13;
+  print('Возраст: ${person.age}');
+  
+  person.age = -5;
+}
+
+-------------------------------
+
+class Logger {
+  static final Logger _instance = Logger._internal();
+  
+  factory Logger() {
+    return _instance;
+  }
+  
+  Logger._internal();
+  
+  void log(String message) {
+    print('Лог: $message');
+  }
+}
+
+void main() {
+  var logger = Logger();
+  logger.log('ДПК');
+}
+
+------------------------------
+
+enum DayOfWeek {
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday,
+  sunday,
+}
+
+void checkWeekend(DayOfWeek day) {
+  if (day == DayOfWeek.saturday || day == DayOfWeek.sunday) {
+    print('Это ад!');
+  } else {
+    print('Это пойдет');
+  }
+}
+
+void main() {
+  checkWeekend(DayOfWeek.saturday);
+  checkWeekend(DayOfWeek.monday);
+}enum DayOfWeek {
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday,
+  sunday,
+}
+
+void checkWeekend(DayOfWeek day) {
+  if (day == DayOfWeek.saturday || day == DayOfWeek.sunday) {
+    print('Это ад!');
+  } else {
+    print('Это пойдет');
+  }
+}
+
+void main() {
+  checkWeekend(DayOfWeek.saturday);
+  checkWeekend(DayOfWeek.monday);
+}
+
+-----------------------------------
+
+mixin Flyable {
+  void fly() {
+    print('Какой летать??? Я только спать умею!');
+  }
+}
+
+class Bird with Flyable {}
+
+void main() {
+  var bird = Bird();
+  bird.fly();
+}
+
+---------------------------------------
+
+class Animal {}
+
+class Dog extends Animal {}
+
+class Cat extends Animal {}
+
+void main() {
+  var animal = [Dog(), Cat(), Dog(), Cat()];
+  
+  for (var animal in animals) {
+    if(animal is Dog) {
+      print('Это собака!');
+    } else if (animal is Cat) {
+      print('Это кошка :(');
+    }
+  }
+}
+
+--------------------------------------
+
+class Vehicle {}
+
+class Car extends Vehicle {}
+
+void main() {
+  Vehicle vehicle = Car();
+  
+  if (vehicle is Car) {
+    Car car = vehicle as Car;
+    print('Объукт успешно приведен к типу Car');
+  } else {
+    print('Объукт не является типом Car');
+  }
+}
+
+--------------------------------------
+
+class Person {
+  String? name;
+  
+  Person(this.name);
+}
+
+void main() {
+  var person = Person(null);
+  print('Имя: ${person.name  ?? 'Неизвестно'}');
+}
+
+----------------------------------
+
+class Address {
+  String city;
+  
+  Address(this.city);
+}
+
+class Person {
+  Address? address;
+  
+  Person(this.address);
+}
+
+void main() {
+  var person = Person(null);
+  print('Город: ${person.address?.city ?? 'Неизвестно'}');
+}
+
+---------------------------------
+
+class Person {
+  String name = '';
+  int age = 0;
+  
+  void setName(String name) {
+    this.name = name;
+  }
+  
+  void setAge(int age) {
+    this.age = age;
+  }
+}
+
+void main() {
+  var person = Person()
+    ..setName('Тимоха ');
+    ..setAge(13);
+  
+  print('Имя: ${person.name}, Возраст: ${person.age}');
+}
+
+---------------------------------
+
+class Address {
+  String city;
+  
+  Address(this.city);
+}
+
+class Person {
+  late Address address;
+  
+  void setAddress(Address address) {
+    this.address = address;
+  }
+}
+
+void main() {
+  var person = Person();
+  person.setAddress(Address('Донской'));
+  print('Город: ${person.address.city}');
+}
+
+---------------------------------------
+
+class Person {
+  String name;
+  int age;
+  
+  Person({required this.name, required this.age});
+}
+
+void main() {
+  var person = Person(name: 'Тимоха', age: 13);
+  print('Имя: ${person.name}, Возраст ${person.age}');
+}
+
+-------------------------------------------
+
+class Point {
+  final int x;
+  final int y;
+  
+  const Point(this.x, this.y);
+}
+
+void main() {
+  const point = Point(10, 20);
+  print('Точка: (${point.x}, ${point.y})');
+}
+
+-----------------------------------
+
+class Circle {
+  final double radius;
+  
+  Circle(this.radius);
+}
+
+void main() {
+  var circle = Circle(5);
+  print('Радиус круга: ${circle.radius}');
+}
+
+---------------------------------
+
+class Person {
+  int age;
+
+  Person(this.age) : assert(age >= 0, 'Возраст не может быть отрицательным!');
+}
+
+void main() {
+  var person1 = Person(30);
+  print('Возраст: ${person1.age}');
+}
